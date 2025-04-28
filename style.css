@@ -1,0 +1,133 @@
+/* Reset di base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Background generale */
+body {
+    background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+header {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #000000;
+}
+
+/* Container prodotti */
+#product-list, #cart-items, #order-summary, #product-detail {
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Card Prodotto */
+.product-card, .product-detail-card, .cart-item {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 20px;
+    width: 250px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover, .product-detail-card:hover, .cart-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(31, 38, 135, 0.5);
+}
+
+/* Immagini prodotto */
+.product-card img, .product-detail-card img, .cart-item img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+/* Pulsanti */
+button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #ffffff;
+    color: #333;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #66a6ff;
+    color: white;
+    transform: scale(1.05);
+}
+
+/* Form di registrazione/login */
+.form-container {
+    margin: auto;
+    margin-top: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 40px;
+    border-radius: 20px;
+    width: 300px;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(10px);
+}
+
+.form-container h1 {
+    margin-bottom: 20px;
+    color: white;
+}
+
+.form-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-container input {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    #product-list, #cart-items, #order-summary, #product-detail {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .product-card, .product-detail-card, .cart-item {
+        width: 80%;
+    }
+}
