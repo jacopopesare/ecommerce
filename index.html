@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - E-commerce</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Il Mondo dei Funko e Action Figures</h1>
+        <nav>
+            <a href="cart.html">Carrello 🛒</a>
+            <a href="signin.html">Login</a>
+        </nav>
+    </header>
+
+    <section id="product-list">
+        <!-- Qui vengono caricati i prodotti dinamicamente -->
+    </section>
+
+    <script src="products.js"></script>
+    <script>
+        const container = document.getElementById('product-list');
+
+        products.forEach(product => {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.innerHTML = `
+                <img src="${product.image}" alt="${product.name}">
+                <h3>${product.name}</h3>
+                <p>€${product.price.toFixed(2)}</p>
+                <button onclick="viewProduct(${product.id})">Vedi Dettagli</button>
+            `;
+            container.appendChild(card);
+        });
+
+        function viewProduct(id) {
+            localStorage.setItem('selectedProduct', id);
+            window.location.href = 'product.html';
+        }
+    </script>
+</body>
+</html>
