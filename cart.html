@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrello</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Il tuo Carrello</h1>
+        <nav>
+            <a href="index.html">Home</a>
+        </nav>
+    </header>
+
+    <section id="cart-items">
+        <!-- Prodotti nel carrello -->
+    </section>
+
+    <section id="cart-summary">
+        <!-- Totale e Checkout -->
+    </section>
+
+    <script src="products.js"></script>
+    <script>
+        const cartContainer = document.getElementById('cart-items');
+        const summaryContainer = document.getElementById('cart-summary');
+        
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        if (cart.length === 0) {
+            cartContainer.innerHTML = "<p>Il carrello è vuoto.</p>";
+        } else {
+            let total = 0;
+
+            cart.forEach(id => {
+                const product = products.find(p => p.id === id);
+                if (product) {
+                    const item = document.createElement('div');
+                    item.className = 'cart-item';
+                    item.innerHTML = `
+                        <img src="${product.image}" alt="${product.name}">
+                        <h3>${product.name}</h3>
+                        <p>€${product.price.toFixed(2)}</p>
+                        <button onclick="removeFromCart(${id})">Rimuovi</button>
+                    `;
+                    cartContainer.appendChild(item);
+                    total += product.price;
+                }
+            });
+
+            summaryContainer.innerHTML = `
+                <h2>Totale: €${total.toFixed(2)}</h2>
+                <button onclick="proceedToCheckout()">Procedi all'Acquisto</button>
+            `;
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(productId => productId !== id);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            window.location.reload();
+        }
+
+        function proceedToCheckout() {
+            window.location.href = 'checkout.html';
+        }
+    </script>
+</body>
+</html>
